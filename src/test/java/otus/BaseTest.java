@@ -19,14 +19,14 @@ public class BaseTest {
 
     @BeforeClass()
     public void setUp() throws IOException {
-        //port = setEnvironment("src/main/resources/setRemoteEnvironment.bat");
+        port = setEnvironment("src/main/resources/setRemoteEnvironment.bat");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("chrome");
         capabilities.setVersion("78.0");
         capabilities.setCapability("enableVNC",true);
         capabilities.setCapability("enableVideo",false);
         driver = new RemoteWebDriver(
-                new URL("http://0.0.0.0:4444/wd/hub"),
+                new URL("http://0.0.0.0:"+port+"/wd/hub"),
                 capabilities
         );
         mainPage = new MainPage(driver);
@@ -43,8 +43,7 @@ public class BaseTest {
             stringBuffer.append(str);
         }
         String string = stringBuffer.toString();
-        string.indexOf("4444");
-        //String port = string.substring(string.indexOf("4444"), string.lastIndexOf("/"));
+        String port = string.substring(916, string.lastIndexOf("/"));
         System.out.println("Номер порта: " +port);
         return port;
     }
