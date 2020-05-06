@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke" verbose="1">
+    <test name="Smoke" group-by-instances="true" parallel="classes" thread-count="3">
+        <packages>
+            <package name="otus"/>
+        </packages>
+    </test>
+</suite>
